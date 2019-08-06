@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<div class="site-mobile-menu site-navbar-target" >
+<div class="site-mobile-menu site-navbar-target">
 	<div class="site-mobile-menu-header">
 		<div class="site-mobile-menu-close mt-3">
 			<span class="icon-close2 js-menu-toggle"></span>
@@ -18,7 +19,7 @@
 	<div class="container-fluid">
 		<div class="row align-items-center">
 			<div class="site-logo col-6">
-				<a th:href="@{/}">Careers</a>
+				<a th:href="@{/}">JobFair</a>
 			</div>
 
 			<nav class="mx-auto site-navigation">
@@ -36,9 +37,14 @@
 			<div
 				class="right-cta-menu text-right d-flex aligin-items-center col-6">
 				<div class="ml-auto">
-					<a th:href="@{contact.html}"
+					<a th:href="@{'/login'}" sec:authorize="isAnonymous()"
 						class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span
-						class="mr-2 icon-paper-plane"></span>Contact Us</a>
+						class="mr-2 icon-paper-plane"></span>Login</a>
+					<form th:action="@{/j_spring_security_logout}" method="post">
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" /> <input class="btn btn-primary"
+							type="submit" value="Sign Out" sec:authorize="isAuthenticated()" />
+					</form>
 				</div>
 				<a th:href="@{#}"
 					class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span

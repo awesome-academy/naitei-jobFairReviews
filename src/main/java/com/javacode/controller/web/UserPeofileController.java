@@ -14,5 +14,4 @@ public class UserPeofileController extends BaseController {
 		loadAttributes(model);
 		return "views/admin/jobs/index";
 	}
-
 }
