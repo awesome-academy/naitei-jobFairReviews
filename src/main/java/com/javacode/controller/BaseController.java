@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.javacode.service.CompanyService;
 import com.javacode.service.JobService;
+import com.javacode.service.ProfileService;
 import com.javacode.service.UserService;
 
 public class BaseController {
@@ -23,6 +24,9 @@ public class BaseController {
 
 	@Autowired
 	protected CompanyService companyService;
+	
+	@Autowired
+	protected ProfileService profileService;
 
 	protected void loadAttributes(Model model) {
 		model.addAttribute("jobs", jobService.findAll());

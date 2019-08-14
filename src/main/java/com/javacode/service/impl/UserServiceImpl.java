@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import com.javacode.dao.impl.UserDAOImpl;
+import com.javacode.entities.Profile;
 import com.javacode.entities.User;
 import com.javacode.service.UserService;
 
@@ -23,7 +24,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public User findByEmail(String email) {
 		try {
@@ -80,6 +81,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	public List<User> searchUsers(String name, String email) {
 		try {
 			return getUserDAO().searchUsers(name, email);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public User saveProfile(User user) {
+		try {
+			getProfileDAO().saveOrUpdate(user.getProfile());
+			return getUserDAO().saveOrUpdate(user);
 		} catch (Exception e) {
 			return null;
 		}

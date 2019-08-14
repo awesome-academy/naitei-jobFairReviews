@@ -13,4 +13,6 @@ public interface UserService extends BaseService<Integer, User> {
 	List<User> searchUsers(String name, String email);
 
 	User findByEmail(String email);
+	
+	User saveProfile(User user);
 }

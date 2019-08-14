@@ -15,10 +15,8 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
 		String role = auth.getAuthorities().toString();
 
 		if (role.contains("ADMIN")) {
-			System.out.println(true);
 			return "/jobs";
 		} else {
-			System.out.println(false);
 			return "/";
 		}
 	}

@@ -15,4 +15,7 @@
 	<bean id="userDAO" class="com.javacode.dao.impl.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="profileDAO" class="com.javacode.dao.impl.ProfileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>
